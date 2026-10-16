@@ -53,6 +53,15 @@ without browser registration. See the
 [wallet onboarding reference](skills/pumpview-trading/references/workflow.md).
 Never send PumpView a private key or seed phrase.
 
+## Buy live-data access through MCP
+
+Use `list_data_plans` → `get_payment_instructions` → `prepare_invoice_payment`.
+Review the invoice and unsigned payment, then sign and broadcast using your
+local wallet. Call `confirm_invoice_payment` with that transaction signature
+until finalized, then read `get_access_status`. `get_invoice_status` recovers
+an existing invoice. Never repeat a payment while confirmation is pending.
+Trading itself does not require a data package. No Coinbase service is needed.
+
 ## Python client
 
 Python 3.10+; the client has no runtime dependencies. Install from a local clone:

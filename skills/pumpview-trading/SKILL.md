@@ -17,14 +17,19 @@ https://pumpview.fun/developers/quickstart.md.
 
 ## Choose the requested capability
 
-- Trading: `get_trading_config` → `build_swap` → local wallet review/signature →
-  `submit_swap` → `get_swap_status`. API access needs no data subscription;
+- Trading: `get_trading_config` в†’ `build_swap` в†’ local wallet review/signature в†’
+  `submit_swap` в†’ `get_swap_status`. API access needs no data subscription;
   swaps still incur the platform fee, tips and network costs.
 - Trading volume: `get_trading_usage` returns account and per-key totals, counted
   from confirmed. USD is an estimate using prices at build time.
 - Data: `get_recent_trades` for a bounded batch, `get_stream_connection` for WSS
   instructions. The client runtime maintains the socket. A paid data package is
   required; the feed is filtered decoder summaries, not every Solana swap.
+
+- Data package: `list_data_plans` → `get_payment_instructions` →
+  `prepare_invoice_payment` → local wallet review/sign/broadcast →
+  `confirm_invoice_payment`. Recover with `get_invoice_status`; retain the
+  invoice ID and payment signature. A pending confirmation is not a new payment.
 
 ## Preserve the economic intent
 

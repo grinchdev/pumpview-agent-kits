@@ -1,9 +1,9 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "fun.pumpview/trading",
-  "title": "PumpView — Solana Trading & Live Data",
+  "title": "PumpView вЂ” Solana Trading & Live Data",
   "description": "Solana swaps with local signing, confirmed receipts, trading volume and filtered live trade data.",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "websiteUrl": "https://pumpview.fun/solana-trading-api",
   "repository": {"url": "https://github.com/grinchdev/pumpview-agent-kits", "source": "github"},
   "icons": [{"src": "https://pumpview.fun/static/favicon.svg", "mimeType": "image/svg+xml"}],

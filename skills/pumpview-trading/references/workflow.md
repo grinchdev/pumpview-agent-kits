@@ -2,8 +2,8 @@
 
 ## Access
 
-Account users: https://pumpview.fun/developers#account → sign in → link the
-signing wallet → create a dedicated key. Use `Authorization: Bearer <key>`.
+Account users: https://pumpview.fun/developers#account в†’ sign in в†’ link the
+signing wallet в†’ create a dedicated key. Use `Authorization: Bearer <key>`.
 
 Agents with an authorized local wallet can use REST without browser registration:
 
@@ -68,8 +68,19 @@ do not add volume. An unavailable response is not zero volume.
 Live data uses `GET /v1/trades` or `wss://api.pumpview.fun/v1/stream`.
 Read current plans at `/v1/plans`. A data subscription is separate from trading.
 Payments use native USDC and PumpView invoices; Coinbase is not required.
-Payment instructions and verification are documented in the authoritative
-quickstart; never infer permission to pay from a data query or a 402 response.
+For MCP, call `list_data_plans` for exact prices and `sales_enabled`. With an
+authorized purchase, create one invoice using `get_payment_instructions` and
+retain its ID. `get_invoice_status` returns payer, recipient, mint, atomic amount,
+memo, expiry and `paid`. `prepare_invoice_payment` returns an unsigned **legacy**
+Solana transaction and its block-height expiry. Review, sign and broadcast with
+the authorized wallet; `submit_swap` cannot submit invoice payments.
+
+Call `confirm_invoice_payment` with the invoice ID and broadcast signature.
+A 409 can mean payment not finalized; retry confirmation with backoff, keeping
+the same signature. Never pay again while pending. Once paid, `get_access_status`
+shows the package. An expired blockhash permits preparing another transaction
+for the same unpaid, unexpired invoice only after checking the old signature.
+Never infer permission to purchase from a data query or a 402 response.
 
 All keys share one WSS connection and the account's HTTP/MCP rate limit.
 Persist the replay cursor and deduplicate event_id; record a gap on expired
