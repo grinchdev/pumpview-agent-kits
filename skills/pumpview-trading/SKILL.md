@@ -17,8 +17,8 @@ https://pumpview.fun/developers/quickstart.md.
 
 ## Choose the requested capability
 
-- Trading: `get_trading_config` в†’ `build_swap` в†’ local wallet review/signature в†’
-  `submit_swap` в†’ `get_swap_status`. API access needs no data subscription;
+- Trading: `get_trading_config` → `build_swap` → local wallet review/signature →
+  `submit_swap` → `get_swap_status`. API access needs no data subscription;
   swaps still incur the platform fee, tips and network costs.
 - Trading volume: `get_trading_usage` returns account and per-key totals, counted
   from confirmed. USD is an estimate using prices at build time.

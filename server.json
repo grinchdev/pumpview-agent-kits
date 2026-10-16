@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "fun.pumpview/trading",
-  "title": "PumpView вЂ” Solana Trading & Live Data",
+  "title": "PumpView — Solana Trading & Live Data",
   "description": "Solana swaps with local signing, confirmed receipts, trading volume and filtered live trade data.",
   "version": "1.2.3",
   "websiteUrl": "https://pumpview.fun/solana-trading-api",

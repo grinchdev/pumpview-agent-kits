@@ -2,8 +2,8 @@
 
 ## Access
 
-Account users: https://pumpview.fun/developers#account в†’ sign in в†’ link the
-signing wallet в†’ create a dedicated key. Use `Authorization: Bearer <key>`.
+Account users: https://pumpview.fun/developers#account → sign in → link the
+signing wallet → create a dedicated key. Use `Authorization: Bearer <key>`.
 
 Agents with an authorized local wallet can use REST without browser registration:
 
