@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pumpview-agent-kit"
+version = "1.0.0"
+description = "PumpView Solana trading and live-data API client for AI agents"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "PumpView"}]
+dependencies = []
+
+[project.urls]
+Homepage = "https://pumpview.fun/solana-trading-api"
+Documentation = "https://pumpview.fun/developers/quickstart"
+Repository = "https://github.com/grinchdev/pumpview-agent-kits"
+
+[tool.setuptools.packages.find]
+where = ["src"]
