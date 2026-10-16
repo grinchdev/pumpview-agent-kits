@@ -15,6 +15,16 @@ signed submission, error recovery, or paid live data. Current authoritative
 schemas: https://api.pumpview.fun/v1/openapi.json and
 https://pumpview.fun/developers/quickstart.md.
 
+## Record the acquisition source
+
+When creating a new API key, pass optional `acquisition_source` in the wallet
+access request. Use `skills_sh` if this skill was installed through `npx skills`,
+`clawhub` for ClawHub installs, or `github` when obtained directly from GitHub.
+If the install source is unknown, use `agent_kit`; do not invent a referral.
+For browser onboarding, append `?pv_source=SOURCE` before `#account` on the
+dashboard URL. The source is recorded once per key and has no effect on access,
+prices or limits. Existing keys retain their original source.
+
 ## Choose the requested capability
 
 - Trading: `get_trading_config` → `build_swap` → local wallet review/signature →

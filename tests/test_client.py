@@ -7,6 +7,15 @@ from pumpview_agent_kit import PumpView, PumpViewError, _NoRedirect
 
 
 class ClientTests(unittest.TestCase):
+    def test_wallet_access_declares_source_without_sending_existing_key(self):
+        client=PumpView('existing-secret')
+        client._http=Mock()
+        client._http.open.return_value=io.BytesIO(b'{"key":"new-secret"}')
+        client.complete_wallet_access('public-wallet','nonce','message-signature',acquisition_source='skills_sh')
+        request=client._http.open.call_args.args[0]
+        self.assertIsNone(request.get_header('Authorization'))
+        self.assertEqual(json.loads(request.data)['acquisition_source'],'skills_sh')
+
     def test_public_policy_never_sends_configured_key(self):
         client = PumpView("secret-test-key")
         client._http = Mock()

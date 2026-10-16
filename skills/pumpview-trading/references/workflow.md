@@ -10,7 +10,8 @@ Agents with an authorized local wallet can use REST without browser registration
 1. `POST /v1/agent/challenge` with `{"wallet":"PUBLIC_KEY"}`.
 2. Verify the message identifies PumpView and that wallet; sign its exact UTF-8
    bytes locally. Encode the Ed25519 signature in base58 (not base64).
-3. `POST /v1/agent/access` with wallet, returned nonce, signature and optional name.
+3. `POST /v1/agent/access` with wallet, returned nonce, signature, optional name
+   and `acquisition_source` (see the skill entrypoint for the install source).
    Store the returned `key` as a secret. Do not display the response in logs.
 
 A challenge expires after 300 seconds and is single use. A linked wallet resolves

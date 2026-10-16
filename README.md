@@ -5,8 +5,8 @@
 **Solana trading and live trade data for AI agents.** Build a swap, sign locally,
 submit through PumpView, and read the execution receipt from confirmed onward.
 
-[Trading API](https://pumpview.fun/solana-trading-api) ·
-[Dashboard](https://pumpview.fun/developers#account) ·
+[Trading API](https://pumpview.fun/solana-trading-api?pv_source=github) ·
+[Dashboard](https://pumpview.fun/developers?pv_source=github#account) ·
 [Quickstart](https://pumpview.fun/developers/quickstart) ·
 [OpenAPI](https://api.pumpview.fun/v1/openapi.json)
 
@@ -44,7 +44,7 @@ node examples/mcp-discovery.mjs
 ## Get access
 
 **Existing PumpView account:** sign in to the
-[dashboard](https://pumpview.fun/developers#account), link your signing wallet
+[dashboard](https://pumpview.fun/developers?pv_source=github#account), link your signing wallet
 and create an API key.
 
 **Agent-owned wallet:** request `/v1/agent/challenge`, sign its exact message
@@ -52,6 +52,16 @@ locally and exchange the signature at `/v1/agent/access`. This creates a key
 without browser registration. See the
 [wallet onboarding reference](skills/pumpview-trading/references/workflow.md).
 Never send PumpView a private key or seed phrase.
+
+## Attribution
+
+Keys record an optional `acquisition_source` at creation so PumpView can report
+requests and confirmed volume by acquisition channel. For a `npx skills`
+installation use `skills_sh`; for a ClawHub install use `clawhub`; direct GitHub
+users can use `github`. Unknown kit installs use `agent_kit`. The Python client's
+`complete_wallet_access(..., acquisition_source="skills_sh")` accepts the label.
+This is client-declared attribution, not referral verification. Do not send raw
+referrer URLs or secrets. It does not change fees, limits or permissions.
 
 ## Buy live-data access through MCP
 

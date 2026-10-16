@@ -58,13 +58,13 @@ class PumpView:
     def wallet_challenge(self, wallet):
         return self._request("POST", "/v1/agent/challenge", {"wallet": wallet}, authenticated=False)
 
-    def complete_wallet_access(self, wallet, nonce, signature, name="PumpView agent"):
+    def complete_wallet_access(self, wallet, nonce, signature, name="PumpView agent", *, acquisition_source="agent_kit"):
         """signature is a base58 signature of the challenge's exact UTF-8 message.
 
         The returned key is a secret. Store it in a secret manager, never a log.
         """
         return self._request("POST", "/v1/agent/access",
-                             dict(wallet=wallet, nonce=nonce, signature=signature, name=name), authenticated=False)
+                             dict(wallet=wallet, nonce=nonce, signature=signature, name=name, acquisition_source=acquisition_source), authenticated=False)
 
     def build_swap(self, intent):
         """Build only. Persist request_id before calling; reuse after a timeout."""
